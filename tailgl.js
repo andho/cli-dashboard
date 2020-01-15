@@ -208,6 +208,12 @@ function poll() {
   .then(() => poll(config.streamID));
 }
 
+process.on('SIGINT', function() {
+  console.log("\nExiting");
+
+  process.exit();
+});
+
 // Entry
 getOptions()
 .then(graylog.getMetadata)
